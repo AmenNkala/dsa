@@ -24,7 +24,7 @@
 const linearSearch = (array, target) => {
     for (let index = 0; index < array.length; index++) {
         if (array[index] === target) {
-            return array[index];
+            return index;
         }
     }
     return -1; //Target not found, return -1
@@ -57,7 +57,7 @@ const binarySearch = (array, target) => {
         let mid = low + Math.floor((high - low) / 2);
 
         if (target == array[mid]) {
-            return array[mid];
+            return mid;
         } else if (target < array[mid]) {
             high = mid - 1;
         } else {
@@ -66,4 +66,35 @@ const binarySearch = (array, target) => {
     }
 
     return -1; //Target not found, return -1
+}
+
+/**
+ * First Occurrence:
+ * The high pointer is updated to mid - 1 even when the target is found to 
+ * ensure that we are searching for the first occurrence in the left part of the array.
+ * 
+ * Last Occurrence:
+ * The low pointer is updated to mid + 1 when the target is found to 
+ * ensure that we are searching for the last occurrence in the right part of the array.
+ */
+
+const binarySearchV2 = (array, target) => {
+    let low = 0;
+    let high = array.length - 1;
+    let result = -1; //Target not found, return -1
+
+    while (low <= high) {
+        let mid = low + Math.floor((high - low) / 2);
+
+        if (target == array[mid]) {
+            result = mid;
+            high = mid - 1; //continue to search in the left
+        } else if (target < array[mid]) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return result;
 }
