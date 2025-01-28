@@ -21,7 +21,7 @@ const bubbleSort = (array) => {
                 swapped = true;
             }
         }
-        length--; ``
+        length--;
     } while (swapped);
     return array;
 }
