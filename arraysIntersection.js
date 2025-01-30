@@ -12,3 +12,9 @@ function intersection(arr1, arr2) {
 
   return intersection;
 }
+
+//Optimzed version
+function intersectionV2(arr1, arr2) {
+  const set2 = new Set(arr2);
+  return [...new Set(arr1)].filter((val) => set2.has(val));
+}
