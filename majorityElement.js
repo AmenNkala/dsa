@@ -10,5 +10,13 @@ function majorityElement(array) {
   return majorEl;
 }
 
-const result = majorityElement([2, 2, 1, 1, 1, 2, 2, , 1, 1, 1, 1]);
-console.log(result);
+//Optimized Solution
+function majorityElementV2(array) {
+  const countMap = {};
+  const majorityThreshold = Math.floor(array.length / 2);
+
+  for (let num of array) {
+    countMap[num] = (countMap[num] || 0) + 1;
+    if (countMap[num] > majorityThreshold) return num;
+  }
+}
