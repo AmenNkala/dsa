@@ -7,7 +7,9 @@ function findSmallestPositiveInt(arr) {
     for (let i = 1; i <= max; i++) {
       if (!set.has(i)) {
         return i;
-      } else return max + 1;
+      }
     }
   }
+
+  return max + 1;
 }
